@@ -10,7 +10,7 @@ CREATE TABLE fact_supplier_purchases (
 INSERT INTO fact_supplier_purchases (supplier_id, total_purchase_amount, purchase_date, number_of_products)
 SELECT p.supplier_id, 
     SUM(od.unit_price * od.quantity) AS total_purchase_amount, 
-    o.order_date AS purchase_date, -- I think when you order a product, you buy it
+    o.order_date AS purchase_date,
     COUNT(DISTINCT od.product_id) AS number_of_products
 FROM staging.staging_order_details od
 JOIN staging.staging_orders o ON od.order_id = o.order_id
