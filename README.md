@@ -1,5 +1,5 @@
 # Feruz-Farxodov-Building-a-Data-Mart-Task
-# description and creativity can be found in different folder and within files - given (screenshots, documentation and description)
+# Description and creativity can be found in different folder and within files - given (screenshots, documentation and description)
 Feruz Farxodov - Building a Data Mart - Task
 
 Building a Data Mart
