@@ -1,6 +1,6 @@
 CREATE TABLE fact_product_sales (
     fact_sales_id SERIAL PRIMARY KEY,
-    date_id VARCHAR(50), --changed the type for compatible with dim_date table
+    date_id VARCHAR(50),
     product_id INT,
     quantity_sold INT,
     total_sales DECIMAL(10,2),
@@ -17,7 +17,7 @@ INSERT INTO fact_product_sales (date_id, product_id, quantity_sold, total_sales)
 SELECT dd.date_id, p.product_id, sod.quantity, (sod.quantity * sod.unit_price) AS total_sales
 FROM staging.staging_order_details sod
 JOIN staging.staging_orders s ON sod.order_id = s.order_id
-JOIN dim_date dd ON s.order_date = dd.date --joining dim_date cause I put the number of seconds since "January 1st, 1970" as an identifier for table dim_date
+JOIN dim_date dd ON s.order_date = dd.date
 JOIN staging.staging_products p ON sod.product_id = p.product_id;
 
 SELECT p.product_name,
@@ -31,7 +31,7 @@ LIMIT 5;
 
 SELECT product_id, product_name, units_in_stock
 FROM dim_product
-WHERE units_in_stock < 10 -- Assumes a critical low stock level threshold of 10 units
+WHERE units_in_stock < 10 
 ORDER BY 3; 
 
 SELECT c.category_name, 
